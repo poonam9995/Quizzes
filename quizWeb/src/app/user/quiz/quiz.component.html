@@ -1,0 +1,57 @@
+<app-navbar-user></app-navbar-user>
+
+
+<div class="bodyDiv">
+  <br>
+  <br>
+  <br>
+  <div class="model">
+    <div class="title">
+    </div>
+    <div class="questionDiv" *ngIf="question && timeLeft>0">
+    <form (ngSubmit)="onSubmit()" [formGroup]='questionForm' class="form">
+      
+        <label>{{title}} Question No. {{queNo+1}}
+        </label>
+        <h6 style="float: right">Time Left : {{timeLeft}}</h6>
+        <input type="hidden" formControlName='id' >
+        <div class="qestion">
+          <label>{{queNo+1}} ).{{question.question}}</label>
+
+          <!-- <input type="text" formControlName='que' /> -->
+         
+          <br>
+          <br>
+
+          <span *ngFor="let option2 of question.option; let i = index">
+            <input type="radio" formControlName='answer' name="answer" class="option" value="{{i+1}}"> {{i+1}} ) {{option2.option1}}
+            <br>
+          </span>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success float-left">
+          SAVE & NEXT
+        </button>
+        <button type="button" (click)="final()" class="btn btn-primary float-right">
+          FINISH
+        </button>
+        <br>
+      
+    </form>
+  </div>
+  <div class="questionDiv">
+      
+      <div class="questionResult" *ngIf='!question || !timeLeft'><br>
+        <h2>{{title}} Test Result
+        </h2>
+
+      <br>
+      <br>
+     <h4> Attend Question   :{{attendQue}}</h4>
+     <h4>correct Answer is :{{countAns}}</h4> 
+      <h4>Worng Answer is   :{{aswerArr.length -countAns }}</h4><br>
+  </div>
+
+  </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<app-navbar-admin></app-navbar-admin>
+
+<div class="AddQuizzzes">
+  <div class="form-Header">
+    Quizzes
+  </div>
+<br>
+  <form (ngSubmit)="onSubmit()" [formGroup]='addQuiz' class="form">
+      <br>
+    <div class="quizeName">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="title">Titile: </label>
+          <input type="text" id="title" formControlName='title' class="form-control" required />
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="description">Description:</label>
+          <input type="text" id="description" formControlName='description' class="form-control" required />
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <!-- How Many Question You Have To Add : <input type="number" formControlName='questionNumber'>
+      <button (click)="createDiv()">Create div</button> <br>
+      <br> -->
+    <div class="quizeQuestion">
+      <div formArrayName="Question" *ngFor="let item of addQuiz.get('Question').controls; let i = index;">
+        <div class="quizeQuestion" [formGroupName]="i">
+          <div class="form-group">
+            <label for="">Question {{ i + 1}}:</label>
+            <input type="email" formControlName='question' class="form-control" required>
+          </div>
+<div class="row" >
+          <div class="col-md-3" formArrayName="option" *ngFor="let k of item['controls'].option['controls']; let j = index;">
+           
+              <div class="form-group " [formGroupName]="j">
+                <label>Options{{j+1}} :</label>
+                <input type="text" formControlName='option1' class="form-control">
+              </div>
+
+            </div>
+</div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="addOPtionGroupClick(i)">Add Option
+            </button>
+
+          </div>
+          <div class="form-group ">
+            <label for="">Correct Answer:</label>
+            <input type="text" formControlName='correctAns' class="form-control" required>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-primary" (click)="addgroupClick()">Add Question
+          </button>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    
+    <button type="submit" class="btn btn-primary float-left"> Submit </button>
+  </form>
+  <br>
+  <br>
+</div>

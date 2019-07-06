@@ -1,0 +1,37 @@
+<div class="register">
+</div>
+<br>
+<br>
+<div class="adminform">
+  <div class="form-Header">
+    Admin Login
+  </div>
+  <br>
+  <div class="form-contain">
+    <form (ngSubmit)="onSubmit()" [formGroup]='login' class="form">
+      <div class="form-group">
+        <label for="inputemail">Admin Id :<label class="red-text">*</label></label>
+        <input type="email" formControlName='admin_Id' class="form-control" required>
+        <div class="alert red-text"
+          *ngIf="login.get('admin_Id').hasError('required') && (login.get('admin_Id').touched || login.get('admin_Id').dirty) ">
+          Enter Admin Id
+        </div>
+       
+      </div>
+      <div class="form-group ">
+        <label>Password:
+          <label class="red-text">*</label>
+        </label>
+        <input type="password" formControlName='password' class="form-control" required />
+        <div class="alert   red-text"
+          *ngIf="login.get('password').hasError('required') && (login.get('password').touched || login.get('password').dirty) ">
+          Enter password.
+        </div>
+      </div>
+      <button type="submit" [disabled]="login.controls['admin_Id' && 'password'].invalid || login.prestine"
+        class="btn btn-primary">Submit</button>
+         </form>
+
+  </div>
+</div>
+

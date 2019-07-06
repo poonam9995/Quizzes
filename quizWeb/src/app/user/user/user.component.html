@@ -1,0 +1,191 @@
+<app-navbar-user></app-navbar-user>
+<!---    Body Part  -->
+
+
+
+<div class="bodyDiv">
+
+  <div class="table-responsive" data-dismiss="modal">
+    <table class="table table-striped" id="customers">
+      <thead>
+        <tr>
+          <th scope="col">Test Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Question Number</th>
+          <th scope="col">Opration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quiz of quizzes ; let i = index">
+          <td>{{quiz.title | uppercase}}</td>
+          <td>{{quiz.description}}</td>
+          <td>{{quiz.Question.length}}</td>
+          <td>
+            <a type="button" routerLink="/quiz/{{quiz._id}}" class="btn btn btn-warning">Start Test        
+            </a>
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+
+
+<div class="userResult">
+ 
+    <div class="table-responsive" data-dismiss="modal"  *ngIf='result'>
+      <table class="table table-striped" id="customers">
+        <thead>
+          <tr>
+            <th scope="col">Test Name</th>
+            <th scope="col">Question Number</th>
+            <th scope="col">Attened Question</th>
+            <th scope="col">Correct Answer</th>
+          </tr>
+        </thead>
+        <tbody>
+   
+          <tr *ngFor="let r of result ; let i = index" >            
+            <span *ngFor='let q of quizzes;let i=index'>
+            <td *ngIf='q._id == r.quizid'>
+              {{q.title}}
+            </td>
+          </span>
+
+            <td>{{r.result.length}}</td>
+
+            <td>{{r.attended}}</td>
+            <td>
+              {{r.markes}}
+            </td>
+  
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="row ">
+
+
+ 
+ SideBar
+
+  <div class="col-md-2">
+    <div class="sidenav">
+      <a (click)='getQuestion(quiz.title)' *ngFor="let quiz of quizzes">{{quiz.title}}</a>
+    </div>
+  </div> 
+ Multiple Question Div...
+  <div class="myDIV col-md-10" *ngIf="question1">
+    <div class="instraction">
+      There is {{question1.Question.length | json}} question in {{question1.title | json}} Test
+    </div>
+
+    <br>
+    <br>
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmitQue()" class="form">
+    <div class="form-contain" *ngFor="let que of question1.Question; let i = index ">
+      Question {{i + 1}}:
+      <div class="form-group">
+        <input type="text" formControlName="question" readonly class="form-control" required/>
+      </div>
+      <div class="form-group ">
+        <label>
+          <label>Option :</label>
+        </label>
+        <div  required *ngFor="let option2 of que.option;let j = index">
+          <input type="radio" formControlName="answer" name="answer" value="{{option2.option1}}">{{j+1}} ) {{option2.option1}}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary">Next</button>
+
+      </div>
+
+    </div>
+    </form>
+  </div>
+
+
+</div> -->
+
+
+<!---  
+ Change Password Form
+-->
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Forget Password</h4>
+        <button type="button" class="close" (click)="close()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-contain">
+          <form (ngSubmit)="onSubmit()" [formGroup]='changePass' class="form">
+
+
+            <div class="form-group ">
+              <label for="inputEmail4"> New Password:
+                <label class="red-text">*</label>
+              </label>
+              <input type="password" formControlName='password' class="form-control" placeholder="" required />
+              <div class="alert   red-text"
+                *ngIf="changePass.get('password').hasError('required') && (changePass.get('password').touched || changePass.get('password').dirty) ">
+                Enter password.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputEmail4">Confirm Password:
+                <label class="red-text">*</label>
+              </label>
+              <input type="password" formControlName='cpassword' class="form-control" placeholder="" required />
+              <div class="alert   red-text"
+                *ngIf="changePass.get('password').hasError('required') && (changePass.get('password').touched || changePass.get('password').dirty) ">
+                Enter password.
+              </div>
+              <div class="alert red-text" *ngIf="changePass.get('cpassword').errors?.pass">
+                Password and Conform Password Not Match.
+              </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-default" (click)="close()">
+          Close
+        </a>
+      </div>
+    </div>
+
+  </div>
+</ng-template>

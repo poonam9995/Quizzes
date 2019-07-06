@@ -1,0 +1,66 @@
+.form-Header{
+    font-size: 30px;
+    font-family: Arial Narrow Bold;
+    text-align: center;
+   
+    color: rgb(0, 0, 0);
+   
+} 
+.AddQuizzzes{      
+    border-radius: 0.5%;
+    background-color:rgb(199, 199, 199);
+}
+
+#customers tr:nth-child(even){background-color: #ffffff;}
+
+#customers tr:hover {background-color: rgb(238, 238, 238);}
+#customers tr {
+    background-color: white;
+}
+#customers th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: #344035!important;
+  color: white;
+  
+}
+ 
+ .table1{
+  border-left: gray;
+   width: 100%;
+ 
+  }
+
+  .quizzeDropdown{
+    background-color: white;
+    border:1px rgb(182, 182, 182) solid ;
+    padding: 22px;
+  
+  }
+.userResult{
+  margin-top: 30px;
+}
+.lable{
+  text-align: end;
+}
+.quizzeDropdown{
+ margin-left: 20px;
+ margin-right: 20px;
+ border-radius: 5px;
+}
+.displayTable{
+  margin-left: 20px;
+ margin-right: 20px;
+}
+.questionDiv{
+  padding: 12px;
+  margin-top: 10px;
+  border-bottom: 1px solid gray;
+}
+.skip{
+  color: rgb(68, 50, 148);
+}
+.option{
+  display: inline;
+}

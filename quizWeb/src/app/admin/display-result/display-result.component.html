@@ -1,0 +1,113 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="AddQuizzzes">
+  <div class="form-Header">
+    Quizzes Result Report
+  </div>
+  <br>
+ 
+  <div class="quizzeDropdown" data-dismiss="modal">
+
+    <form (ngSubmit)="onSubmit()" [formGroup]='quizResult' class="form">
+      <div class="form-row">
+        <div class="lable col-md-4 ">
+          <label> Select Quize :</label>
+        </div>
+        <div class="col-md-4">
+
+          <select class="form-control" formControlName='quiz'>
+            <option selected>Choose...</option>
+            <option *ngFor="let quiz of quizzes, index as i" value="{{quiz._id}}" #state1>{{quiz.title | uppercase}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </div>
+
+    </form>
+    <!-- <div class="w3-dropdown-click">
+        <button (click)="myFunction()" class="w3-button w3-black">Quizzes</button>
+        <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+          <button type="button" (click)='getQuestion(quiz.title)' class="w3-bar-item w3-button"
+            *ngFor="let quiz of quizzes">{{quiz.title}}</button>
+        </div>
+      </div>  -->
+  </div>
+  <br>
+  <div class="displayTable">
+    <div class="table-responsive" data-dismiss="modal" *ngIf='results'>
+    <table class="table table-striped" id="customers">
+      <thead>
+        <tr>
+          <th scope="col">Candidate Name</th>
+          <th scope="col">email</th>
+          <th scope="col">Question Count</th>
+          <th scope="col">Attented Question</th>
+          <th scope="col">Marks</th>
+          <th scope="col">Opration</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let result of results ; let i = index">
+          <td>{{result.name | uppercase}}</td>
+          <td>{{result.email}}</td>
+          <td>{{result.questionNo}}</td>
+          <td>{{result.attends}}</td>
+          <td>
+            {{result.marks}}
+
+          </td>
+          <td>
+            <a type="button" (click)="openModal(template,result)"class="btn btn-success">Display
+            </a>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+</div>
+  
+</div>
+
+
+<br>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">User Name : {{username.name }}</h4>
+    <br>
+   
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+ 
+  <div  class="questionDiv"  *ngFor='let q of questionAnswer; let i = index'>
+<label>
+  {{i+1}}). {{q.question }}
+</label>
+<br>
+Option:
+
+    <span class="skip" *ngIf="username.result[i]==0" >  
+     
+    Skip By User.
+</span>
+<br>
+<span class="option" *ngFor="let option2 of q.option ; let r of username.result ; let j = index">
+ 
+    <label [ngStyle]="{'color': j+1 == q.correctAns ? 'green' : j+1 != username.result[i]? 'black': 'red'}"> {{j+1}} ) {{option2.option1}}</label>
+    <br>
+     </span>
+  </div>
+  </div>
+
+</ng-template>

@@ -1,0 +1,73 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="AddQuizzzes">
+  <div class="form-Header">
+    Update Quizzes
+  </div>
+  <br>
+
+  <div class="quizzeDropdown" data-dismiss="modal">
+
+    <form (ngSubmit)="onSubmit()" [formGroup]='quizResult' class="form">
+      <div class="form-row">
+        <div class="lable col-md-4 ">
+          <label> Select Quize :</label>
+        </div>
+        <div class="col-md-4">
+
+          <select class="form-control" formControlName='quiz'>
+            <option selected>Choose...</option>
+            <option *ngFor="let quiz of quizzes, index as i" value="{{quiz._id}}" #state1>{{quiz.title | uppercase}}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </div>
+
+    </form>
+    <!-- <div class="w3-dropdown-click">
+        <button (click)="myFunction()" class="w3-button w3-black">Quizzes</button>
+        <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
+          <button type="button" (click)='getQuestion(quiz.title)' class="w3-bar-item w3-button"
+            *ngFor="let quiz of quizzes">{{quiz.title}}</button>
+        </div>
+      </div>  -->
+  </div>
+
+
+  <br>
+  <div class="displayTable">
+    <div class="table-responsive" data-dismiss="modal" *ngIf='quizzeslist'>
+      <table class="table table-striped" id="customers">
+        <thead>
+          <tr>
+            <th scope="col">Question No.</th>
+            <th scope="col">Question</th>
+            <th scope="col">Opration</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let quiz of quizzeslist ; let i = index">
+            <td style="text-align: center">{{i+1}}</td>
+            <td>{{quiz.question}}</td>
+
+            <td>
+              <a class="btn action-btn">
+                <i class="material-icons edit">edit</i>
+              </a>
+              <a class="btn action-btn" (click)='Delete(quiz.question)'>
+                <i class="material-icons delete">delete</i></a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+
+</div>

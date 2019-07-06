@@ -1,0 +1,37 @@
+
+  ul li .icon{
+
+    color: white;
+  }
+  .red-text{
+ color: red;
+  }
+  .model{
+    background-color:rgb(243, 243, 235);
+
+    border-radius: 2px;
+    border: 1px gray solid;
+    padding:22px;
+  }
+  .qestion{
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    border: 1px gray solid;
+    padding:32px  22px;
+    font-family: Arial, Helvetica, sans-serif; 
+    
+  }
+  .questionResult{
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    border: 1px gray solid;
+    padding:12px  22px;
+    font-family: Arial, Helvetica, sans-serif; 
+  text-align: center;
+  }
+  .option{
+ margin-bottom: 20px;
+  }
+  h2{
+    text-decoration: underline;
+  }

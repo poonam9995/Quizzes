@@ -1,0 +1,90 @@
+
+  ul li .icon{
+
+    color: white;
+  }
+  .red-text{
+ color: red;
+  }
+/* 
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;  
+  left: 0;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  overflow-x: hidden;
+  padding-top: 20px;
+ 
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #f7f5f5;
+  display: block;
+
+}
+
+.sidenav a:hover {
+  color: rgb(43, 42, 42);
+  background-color: #d1d1d1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav 
+  font-size: 28px; /* Increased text to enable scrolling 
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 13px;}
+}
+.form-contain{
+  border-radius: 1%;
+  padding: 12px;
+ border: 1px black solid;
+}
+.instraction{
+  border-radius: 1%;
+  padding: 12px;
+ border: 1px black solid;
+}
+.questionDiv{
+display: none;
+} */
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th { 
+  border: 1px solid #ddd;
+  padding: 8px;
+  
+}
+
+#customers tr:nth-child(even){background-color: #ffffff;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.userResult{
+  margin-top: 30px;
+}
+.material-icons{
+  background-color: black;
+  color: white;
+}

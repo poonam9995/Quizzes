@@ -1,0 +1,74 @@
+<div class="employeeform">
+  <div class="form-Header">
+    User Registration
+  </div>
+  <br>
+  <div class="form-contain">
+    <form (ngSubmit)="onSubmit()" [formGroup]='RegistrationUser' class="form">
+
+      
+        <div class="form-group">
+          <label for="inputEmail4">User Name:
+            <label class="red-text">*</label>
+          </label>
+          <input type="text" formControlName='Name' class="form-control" placeholder="Enter Employee Name" required />
+          <div class="alert   red-text" *ngIf="RegistrationUser.get('Name').hasError('required') && (RegistrationUser.get('Name').touched || RegistrationUser.get('Name').dirty) ">
+            Enter User Name.
+          </div>
+
+
+        </div>
+        <div class="form-group">
+            <label for="inputmobileNo">Mobile No: <label class="red-text">*</label></label>
+            <input type="text" formControlName='mobile' class="form-control"  placeholder="Enter Mobile No." maxlength="10" minlength="10">
+            <div class="alert   red-text" *ngIf="RegistrationUser.get('mobile').hasError('pattern')">      
+                Enter Valid Mobile Number
+                   </div>
+                   <div class="alert   red-text" *ngIf="RegistrationUser.get('mobile').hasError('maxLength')">      
+                     Enter mobile no with maximun 10 digites.
+                    </div>
+          </div>
+          <div class="form-group">
+              <label for="inputemail">Email Id :<label class="red-text">*</label></label>
+              <input type="email" formControlName='email' class="form-control" placeholder="@gmail.com" required>
+    
+              <div class="alert red-text"
+                *ngIf="RegistrationUser.get('email').hasError('required') && (RegistrationUser.get('email').touched || RegistrationUser.get('email').dirty) ">
+                Enter Email Id
+              </div>
+              <div class="alert red-text"
+                *ngIf="RegistrationUser.get('email').hasError('pattern') && (RegistrationUser.get('email').touched || RegistrationUser.get('email').dirty) ">
+                Enter Valid Email Id
+              </div>
+            </div>
+
+        <div class="form-group ">
+            <label for="inputEmail4">Password:
+                <label class="red-text">*</label>
+              </label>
+              <input type="password" formControlName='password' class="form-control" placeholder="" required />
+              <!-- <div class="alert   red-text"
+                *ngIf="RegistrationUser.get('password').hasError('required') && (RegistrationUser.get('password').touched || RegistrationUser.get('password').dirty) ">
+                Enter password.
+              </div>  -->
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail4">Confirm Password:
+                    <label class="red-text">*</label>
+                  </label>
+                  <input type="password" formControlName='cpassword' class="form-control" placeholder="" required  />
+                  
+                  <div class="alert red-text"
+                  *ngIf="RegistrationUser.get('cpassword').errors?.pass  && (RegistrationUser.get('cpassword').touched || RegistrationUser.get('cpassword').dirty) ">
+                  Password and Conform Password Not Match.
+                </div> 
+                </div>
+   
+      <button type="submit"
+        [disabled]="RegistrationUser.controls['Name' && 'email'].invalid || RegistrationUser.prestine"
+        class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+</div> 
